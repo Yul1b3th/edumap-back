@@ -24,16 +24,16 @@ repositories {
 }
 
 dependencies {
-	implementation("com.h2database:h2")
 	implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
+	runtimeOnly("io.asyncer:r2dbc-mysql")
+
 	compileOnly("org.projectlombok:lombok")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	annotationProcessor("org.projectlombok:lombok")
 
 	// Testing
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("io.projectreactor:reactor-test")
 	testImplementation("io.projectreactor:reactor-test")
 	testImplementation("org.mockito:mockito-core")
 	testImplementation("org.mockito:mockito-junit-jupiter")
@@ -42,14 +42,8 @@ dependencies {
 	// Open CSV
 	implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-csv:2.15.2")
 
-	// H2 things
-	implementation("io.r2dbc:r2dbc-h2")
-	runtimeOnly("com.h2database:h2")
-
 	// OpenAPI
 	implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:2.6.0")
-
-
 }
 
 tasks {
@@ -60,7 +54,6 @@ tasks {
 		enabled = false
 	}
 }
-
 
 tasks.withType<Test> {
 	useJUnitPlatform()
