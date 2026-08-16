@@ -84,4 +84,4 @@ Esta API permite consultar información sobre los distritos de Barcelona, inclui
 
 Una vez que la aplicación se esté ejecutando, puede acceder a la documentación de Swagger en:
 
-[https://hackatonitacademy-4eb658690555.herokuapp.com/webjars/swagger-ui/index.html](https://hackatonitacademy-4eb658690555.herokuapp.com/webjars/swagger-ui/index.html)
+[https://edumap-back.onrender.com/webjars/swagger-ui/index.html](https://edumap-back.onrender.com/webjars/swagger-ui/index.html)
