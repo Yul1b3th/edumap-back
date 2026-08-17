@@ -1,9 +1,114 @@
 # API de Distritos de Barcelona
 
-### Descripción:
-Esta API permite consultar información sobre los distritos de Barcelona, incluidos datos de renta y número de actividades educativas por distrito. Está construida usando Spring WebFlux y documentada con Swagger/OpenAPI.
+API REST para consultar información sobre los distritos de Barcelona,
+incluyendo datos de renta y oferta educativa.
 
-### Endpoints:
+El proyecto está construido con Spring Boot, Spring WebFlux y R2DBC,
+utilizando MySQL como base de datos.
+
+---
+
+## Tecnologías
+
+- Java 21
+- Spring Boot 3
+- Spring WebFlux
+- Spring Data R2DBC
+- MySQL
+- Gradle
+- Swagger / OpenAPI
+
+---
+
+## Requisitos
+
+Para ejecutar el proyecto localmente necesitas:
+
+- Java 21
+- Git
+- MySQL
+- Un cliente para administrar MySQL (opcional)
+
+---
+
+## Instalación
+
+### 1. Clonar el repositorio
+
+```bash
+git clone <URL_DEL_REPOSITORIO>
+cd <NOMBRE_DEL_PROYECTO>
+```
+
+### 2. Crear la base de datos
+
+Crear una base de datos MySQL local:
+
+```sql
+CREATE DATABASE edumap;
+```
+
+### 3. Importar los datos
+
+El proyecto necesita la estructura y los datos de la base de datos.
+
+Importar los archivos SQL del proyecto:
+
+- `schema.sql` → crea las tablas
+- `data.sql` → inserta los datos
+
+
+---
+
+## 4. Configurar la conexión a MySQL
+
+Configurar las siguientes variables de entorno:
+
+```text
+DATABASE_URL=r2dbc:mysql://localhost:3306/edumap
+DATABASE_USERNAME=tu_usuario
+DATABASE_PASSWORD=tu_password
+```
+
+El proyecto utiliza estas variables en:
+
+`src/main/resources/application.properties`
+
+```properties
+spring.r2dbc.url=${DATABASE_URL}
+spring.r2dbc.username=${DATABASE_USERNAME}
+spring.r2dbc.password=${DATABASE_PASSWORD}
+```
+
+---
+
+## 5. Ejecutar el proyecto
+
+Desde la raíz del proyecto:
+
+### Windows
+
+```bash
+.\gradlew.bat bootRun
+```
+
+### Linux / macOS
+
+```bash
+./gradlew bootRun
+```
+
+Por defecto, la aplicación utiliza el puerto `8080`.
+
+La API estará disponible en:
+
+```text
+http://localhost:8080
+```
+
+---
+
+## Endpoints
 
 1. **GET `/api/districts/`**
     - **Descripción**: Obtiene una lista de todos los distritos con sus datos de renta.
@@ -72,15 +177,9 @@ Esta API permite consultar información sobre los distritos de Barcelona, inclui
     ]
     ```
 
-### Tecnologías:
+---
 
-- **Spring Boot**
-- **Base de Datos**: H2 (en memoria) configurada usando `JdbcTemplate`.
-- **Swagger**: Documentación automática con `springdoc-openapi`.
-- **Spring WebFlux** (programación reactiva)
-- **Java 21**
-
-### Documentación de la API
+## Documentación de la API
 
 Una vez que la aplicación se esté ejecutando, puede acceder a la documentación de Swagger en:
 
